@@ -5,15 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAMAJA 2026 | Premium Javanese Heritage</title>
     
-    <!-- 🚀 UPGRADE 1: OPEN GRAPH TAGS (Untuk Tampilan Share WA/IG) -->
+    <!-- 🚀 UPGRADE: OPEN GRAPH (Untuk Tampilan Share WA/IG) -->
     <meta property="og:title" content="PAMAJA 2026 - Paseduluran Mahasiswa Ngayogyakarta">
     <meta property="og:description" content="Monggo Sedulur! Satu Paseduluran, Sejuta Gagasan, Cerdas Bergerak. Daftarkan dirimu sekarang sebelum 27 November 2026!">
-    <!-- GANTI URL DI BAWAH INI DENGAN URL GAMBAR LOGO/POSTER ANDA YANG SUDAH DI-UPLOAD -->
     <meta property="og:image" content="https://rianfisika21.github.io/Pamaja_26/logo.jpg">
     <meta property="og:url" content="https://rianfisika21.github.io/Pamaja_26/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    
+
+    <!-- 🚀 UPGRADE: EVENT SEO SCHEMA (Agar muncul di Google Event) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "PAMAJA 2026 First Meet",
+      "startDate": "2026-11-29T08:00:00+07:00",
+      "endDate": "2026-11-29T12:00:00+07:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "Yogyakarta",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Yogyakarta",
+          "addressRegion": "DIY",
+          "addressCountry": "ID"
+        }
+      },
+      "image": [
+        "https://rianfisika21.github.io/Pamaja_26/logo.jpg"
+      ],
+      "description": "Paseduluran Mahasiswa Ngayogyakarta. Satu Paseduluran, Sejuta Gagasan, Cerdas Bergerak.",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://bit.ly/Pamaja2026",
+        "price": "0",
+        "priceCurrency": "IDR",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01T12:00"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "PAMAJA",
+        "url": "https://www.instagram.com/pamaja_26/"
+      }
+    }
+    </script>
+
     <!-- Import Font Klasik & Modern -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -36,6 +75,23 @@
             background-color: var(--dark-sogan); font-family: 'Poppins', sans-serif; padding: 20px;
             overflow-x: hidden; position: relative;
         }
+
+        /* 🚀 UPGRADE: PRELOADER (Splash Screen) */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--dark-sogan); z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .spinner {
+            width: 60px; height: 60px; border: 4px solid rgba(212, 175, 55, 0.3);
+            border-top: 4px solid var(--gold); border-radius: 50%;
+            animation: spin 1s linear infinite; margin-bottom: 15px;
+        }
+        .preloader-text { color: var(--gold); font-family: 'Cinzel', serif; letter-spacing: 2px; font-weight: 600; animation: pulse 1.5s infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .preloader-hidden { opacity: 0; visibility: hidden; }
 
         /* --- BACKGROUND PARTIKEL EMAS MELAYANG --- */
         .gold-dust { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
@@ -83,12 +139,16 @@
         .countdown-label { color: var(--text-gray); font-size: 0.65rem; text-transform: uppercase; }
 
         /* Info Box */
-        .info-box { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.5); border-radius: 10px; padding: 12px 15px; margin-bottom: 15px; text-align: left; }
+        .info-box { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.5); border-radius: 10px; padding: 12px 15px; margin-bottom: 10px; text-align: left; }
         .info-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.85rem; color: var(--text-cream); }
         .info-item:last-child { margin-bottom: 0; }
         .info-label { font-weight: 600; color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.8rem; }
 
-        /* 🚀 UPGRADE 2: FAQ ACCORDION (Mengurangi beban chat panitia) */
+        /* 🚀 UPGRADE: TOMBOL ADD TO CALENDAR */
+        .calendar-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: rgba(255,255,255,0.05); border: 1px dashed var(--gold); color: var(--gold); padding: 8px; border-radius: 8px; font-size: 0.8rem; text-decoration: none; transition: 0.3s; margin-bottom: 15px; font-weight: 600; cursor: pointer; }
+        .calendar-btn:hover { background: var(--gold); color: var(--dark-sogan); }
+
+        /* FAQ (Tanya Jawab) */
         .faq-section { text-align: left; margin-bottom: 15px; }
         .faq-title { color: var(--gold); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
         .faq-item { background: rgba(0,0,0,0.3); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
@@ -99,7 +159,7 @@
         .faq-item.active .faq-answer { max-height: 150px; }
         .faq-item.active .faq-question i { transform: rotate(180deg); }
 
-        /* Tombol */
+        /* Tombol Utama */
         .cta-button { display: block; width: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); background-size: 200% auto; color: var(--dark-sogan); font-family: 'Cinzel', serif; font-weight: 800; font-size: 1rem; text-decoration: none; padding: 15px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); transition: all 0.3s ease; border: none; cursor: pointer; margin-bottom: 12px; position: relative; overflow: hidden; animation: shimmer 3s infinite linear; }
         @keyframes shimmer { to { background-position: 200% center; } }
         .cta-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.8); }
@@ -118,7 +178,7 @@
         .qr-code { background: white; padding: 5px; border-radius: 8px; width: 60px; height: 60px; }
         .qr-code img { width: 100%; height: 100%; display: block; border-radius: 4px; }
 
-        /* 🚀 UPGRADE 3: FLOATING WHATSAPP BUTTON */
+        /* Floating WhatsApp */
         .floating-wa { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease; animation: bounce 2s infinite; }
         .floating-wa:hover { transform: scale(1.1); color: white; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
@@ -144,6 +204,12 @@
     </style>
 </head>
 <body>
+
+    <!-- 🚀 PRELOADER -->
+    <div id="preloader">
+        <div class="spinner"></div>
+        <div class="preloader-text">MEMUAT PAMAJA...</div>
+    </div>
 
     <div class="gold-dust" id="goldDust"></div>
 
@@ -192,7 +258,12 @@
                     </div>
                 </div>
 
-                <!-- FAQ (Tanya Jawab) -->
+                <!-- 🚀 TOMBOL ADD TO CALENDAR -->
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=PAMAJA+2026+First+Meet&dates=20261129T010000Z/20261129T050000Z&details=Jangan+sampai+terlewat!+Acara+First+Meet+Paseduluran+Mahasiswa+Ngayogyakarta.+Cek+IG+@pamaja_26+untuk+info+lanjutan.&location=Yogyakarta" target="_blank" class="calendar-btn">
+                    <i class="fa-regular fa-calendar-plus"></i> Simpan Jadwal ke Kalender
+                </a>
+
+                <!-- FAQ -->
                 <div class="faq-section">
                     <div class="faq-title">Ada Pertanyaan?</div>
                     <div class="faq-item">
@@ -242,6 +313,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
     <script>
+        // 🚀 FITUR PRELOADER
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.classList.add('preloader-hidden');
+            setTimeout(() => { preloader.style.display = 'none'; }, 500);
+        });
+
         // 1. Efek 3D Tilt (Hanya di PC/Laptop)
         if (window.matchMedia("(hover: hover)").matches) {
             VanillaTilt.init(document.querySelector("#posterCard"), {
@@ -297,31 +375,27 @@
             });
         });
 
-        // 🚀 UPGRADE 4: FITUR SHARE (Web Share API)
+        // 6. Fitur Share
         document.getElementById('shareBtn').addEventListener('click', async () => {
             if (navigator.share) {
                 try {
                     await navigator.share({
                         title: 'PAMAJA 2026',
-                        text: 'Monggo Sedulur! Ayo bergabung dengan Paseduluran Mahasiswa Ngayogyakarta. Daftar sekarang!',
+                        text: 'Monggo Sedulur! Ayo bergabung dengan Paseduluran Mahasiswa Ngayogyakarta.',
                         url: 'https://rianfisika21.github.io/Pamaja_26/'
                     });
-                } catch (err) {
-                    console.log('Share dibatalkan', err);
-                }
+                } catch (err) { console.log('Share dibatalkan', err); }
             } else {
-                // Fallback jika browser tidak mendukung
                 navigator.clipboard.writeText("https://rianfisika21.github.io/Pamaja_26/");
                 showToast("Link disalin! Silakan share manual.", "fa-link");
             }
         });
 
-        // 🚀 UPGRADE 5: FAQ ACCORDION LOGIC
+        // 7. FAQ Accordion
         const faqQuestions = document.querySelectorAll('.faq-question');
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
                 const parent = question.parentElement;
-                // Tutup yang lain jika mau (opsional)
                 document.querySelectorAll('.faq-item').forEach(item => {
                     if(item !== parent) item.classList.remove('active');
                 });
@@ -329,7 +403,7 @@
             });
         });
 
-        // 6. Fullscreen
+        // 8. Fullscreen
         document.getElementById('btnFullscreen').addEventListener('click', () => {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen();
@@ -338,6 +412,23 @@
                 document.exitFullscreen();
             }
         });
+
+        /* 
+        🚀 UPGRADE: GOOGLE ANALYTICS 
+        Jika nanti Anda ingin melihat berapa banyak pengunjung web ini, buat akun di analytics.google.com, 
+        dapatkan ID (formatnya G-XXXXXXXXXX), lalu hapus tanda komentar di bawah ini dan ganti ID-nya.
+        */
+        /*
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+        */
     </script>
 </body>
 </html>
