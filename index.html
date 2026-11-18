@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAMAJA 2026 | Premium Javanese Heritage</title>
     
-    <!-- 🚀 PWA: META TAGS & MANIFEST -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#120b06">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
-    <!-- OPEN GRAPH -->
     <meta property="og:title" content="PAMAJA 2026 - Paseduluran Mahasiswa Ngayogyakarta">
     <meta property="og:description" content="Monggo Sedulur! Satu Paseduluran, Sejuta Gagasan, Cerdas Bergerak.">
     <meta property="og:image" content="https://rianfisika21.github.io/Pamaja_26/logo.jpg">
@@ -25,7 +21,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --gold: #D4AF37; --gold-light: #F3C623; --dark-sogan: #120b06; --dark-brown: #2B1B17; --text-cream: #FDF5E6; --text-gray: #d1c8c4; }
 
-        /* 🚀 CUSTOM CURSOR EMAS (Khusus PC) */
+        /* CUSTOM CURSOR EMAS */
         @media (hover: hover) {
             body { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%23D4AF37" opacity="0.8"/></svg>') 12 12, auto; }
             a, button, .faq-question { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="%23F3C623" opacity="1" stroke="%23fff" stroke-width="1"/></svg>') 16 16, pointer; }
@@ -33,7 +29,7 @@
 
         body { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: var(--dark-sogan); font-family: 'Poppins', sans-serif; padding: 20px; overflow-x: hidden; position: relative; }
 
-        /* 🚀 BACKGROUND BATIK PARANG HALUS */
+        /* BACKGROUND BATIK PARANG HALUS */
         body::before {
             content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
@@ -100,11 +96,13 @@
         .info-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.85rem; color: var(--text-cream); }
         .info-item:last-child { margin-bottom: 0; }
         .info-label { font-weight: 600; color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.8rem; }
+        
+        /* 🚀 UPGRADE: TANGGAL JAWA */
+        .javanese-date { display: block; font-size: 0.7rem; color: var(--gold-light); font-style: italic; margin-top: 2px; }
 
         /* CALENDAR & PWA BUTTONS */
         .calendar-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: rgba(255,255,255,0.05); border: 1px dashed var(--gold); color: var(--gold); padding: 8px; border-radius: 8px; font-size: 0.8rem; text-decoration: none; transition: 0.3s; margin-bottom: 15px; font-weight: 600; cursor: pointer; }
         .calendar-btn:hover { background: var(--gold); color: var(--dark-sogan); }
-        
         #pwaInstallBtn { display: none; background: var(--gold); color: var(--dark-sogan); border: none; padding: 8px 15px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; margin-bottom: 15px; width: 100%; transition: 0.3s; box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3); }
         #pwaInstallBtn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(212, 175, 55, 0.6); }
 
@@ -143,8 +141,11 @@
         .floating-wa:hover { transform: scale(1.1); color: white; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
 
-        .audio-toggle { position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--gold); color: var(--gold); width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; transition: 0.3s; }
+        /* 🚀 UPGRADE: AUDIO BUTTON & PULSE */
+        .audio-toggle { position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--gold); color: var(--gold); width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; transition: 0.3s; }
         .audio-toggle:hover { background: var(--gold); color: var(--dark-sogan); }
+        .audio-toggle.playing { animation: audioPulse 1.5s infinite; border-color: var(--gold-light); color: var(--gold-light); }
+        @keyframes audioPulse { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
 
         /* CONTROLS & TOAST */
         .controls { margin-top: 25px; display: flex; gap: 15px; z-index: 10; }
@@ -170,10 +171,15 @@
         <div class="preloader-text">MEMUAT PAMAJA...</div>
     </div>
 
+    <!-- 🚀 UPGRADE: AUDIO TEMBANG JAWA LOKAL -->
+    <!-- Pastikan Anda sudah mengunggah file tembang-jawa.mp3 ke GitHub -->
     <audio id="bg-audio" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"> 
+        <source src="tembang-jawa.mp3" type="audio/mpeg"> 
+        <!-- Fallback jika file mp3 belum diupload -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
-    <div class="audio-toggle" id="audioToggle" title="Nyalakan/Matikan Musik">
+    
+    <div class="audio-toggle" id="audioToggle" title="Nyalakan Tembang Jawa">
         <i class="fa-solid fa-volume-xmark"></i>
     </div>
 
@@ -202,7 +208,6 @@
                 <h1>Paseduluran<br>Mahasiswa<br>Ngayogyakarta</h1>
                 <p class="tagline-bottom">"Satu Paseduluran, Sejuta Gagasan, Cerdas Bergerak"</p>
 
-                <!-- 🚀 FOMO COUNTER -->
                 <div class="fomo-badge">
                     <span class="fomo-dot"></span> <span id="liveViewers">18</span> orang sedang melihat ini
                 </div>
@@ -218,10 +223,12 @@
 
                 <div class="info-box">
                     <div class="info-item"><span class="info-label">Pendaftaran</span><span>s.d. 27 Nov 2026</span></div>
-                    <div class="info-item"><span class="info-label">First Meet</span><span>29 Nov 2026</span></div>
+                    <div class="info-item">
+                        <span class="info-label">First Meet</span>
+                        <span>29 Nov 2026 <span class="javanese-date" id="pasaranDate">(Minggu Legi)</span></span>
+                    </div>
                 </div>
 
-                <!-- 🚀 PWA INSTALL BUTTON -->
                 <button id="pwaInstallBtn"><i class="fa-solid fa-download"></i> Install Web Ini di HP</button>
 
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=PAMAJA+2026+First+Meet&dates=20261129T010000Z/20261129T050000Z&details=Jangan+sampai+terlewat!&location=Yogyakarta" target="_blank" class="calendar-btn">
@@ -274,30 +281,24 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
-        // 🚀 PWA: REGISTER SERVICE WORKER
+        // REGISTER SERVICE WORKER
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').then(() => {
-                console.log('Service Worker Registered');
-            });
+            navigator.serviceWorker.register('sw.js').then(() => { console.log('Service Worker Registered'); });
         }
 
-        // 🚀 PWA: INSTALL PROMPT LOGIC
+        // PWA INSTALL PROMPT
         let deferredPrompt;
         const pwaInstallBtn = document.getElementById('pwaInstallBtn');
-        
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            pwaInstallBtn.style.display = 'block'; // Tampilkan tombol install
+            pwaInstallBtn.style.display = 'block';
         });
-
         pwaInstallBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    pwaInstallBtn.style.display = 'none';
-                }
+                if (outcome === 'accepted') { pwaInstallBtn.style.display = 'none'; }
                 deferredPrompt = null;
             }
         });
@@ -329,17 +330,34 @@
             goldDust.appendChild(dust);
         }
 
-        // 🚀 FOMO COUNTER LOGIC (Angka berubah tiap 3 detik)
+        // FOMO COUNTER
         setInterval(() => {
             const viewers = document.getElementById('liveViewers');
             let currentVal = parseInt(viewers.innerText);
-            // Angka naik turun antara 10 - 35
             let change = Math.floor(Math.random() * 5) - 2; 
             let newVal = currentVal + change;
             if (newVal < 8) newVal = 8;
             if (newVal > 40) newVal = 40;
             viewers.innerText = newVal;
         }, 3000);
+
+        // 🚀 UPGRADE: KALKULASI TANGGAL JAWA (PASARAN)
+        function getPasaran(dateString) {
+            const pasaran = ['Legi', 'Pahing', 'Pon', 'Wage', 'Kliwon'];
+            const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            // Referensi: 1 Januari 2024 adalah Senin Wage
+            const refDate = new Date('2024-01-01T00:00:00').getTime();
+            const targetDate = new Date(dateString).getTime();
+            const diffDays = Math.floor((targetDate - refDate) / (1000 * 60 * 60 * 24));
+            
+            const pasaranIndex = (3 + diffDays) % 5; // 3 adalah index Wage
+            if (pasaranIndex < 0) pasaranIndex += 5; // Handle negative
+            
+            const dayIndex = new Date(dateString).getDay();
+            return `${hari[dayIndex]} ${pasaran[pasaranIndex]}`;
+        }
+        // Set tanggal ke 29 Nov 2026
+        document.getElementById('pasaranDate').innerText = `(${getPasaran('2026-11-29')})`;
 
         // COUNTDOWN & DYNAMIC URGENCY
         const targetDate = new Date("Nov 27, 2026 23:59:59").getTime();
@@ -361,9 +379,7 @@
             document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
             document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
 
-            if (days <= 3) {
-                document.getElementById("urgencyBanner").style.display = 'block';
-            }
+            if (days <= 3) { document.getElementById("urgencyBanner").style.display = 'block'; }
         }, 1000);
 
         // TOAST
@@ -427,21 +443,37 @@
             }
         });
 
-        // AUDIO TOGGLE
+        // 🚀 UPGRADE: AUDIO TOGGLE DENGAN FADE-IN & PULSE EFFECT
         const audio = document.getElementById('bg-audio');
         const audioToggle = document.getElementById('audioToggle');
         let isPlaying = false;
+        let fadeInterval;
 
         audioToggle.addEventListener('click', () => {
             if (!isPlaying) {
+                audio.volume = 0; // Mulai dari 0
                 audio.play();
-                audio.volume = 0.3;
                 audioToggle.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+                audioToggle.classList.add('playing');
                 isPlaying = true;
+
+                // Efek Fade-in Volume (naik perlahan sampai 40%)
+                clearInterval(fadeInterval);
+                fadeInterval = setInterval(() => {
+                    if (audio.volume < 0.4) {
+                        audio.volume = Math.min(0.4, audio.volume + 0.05);
+                    } else {
+                        clearInterval(fadeInterval);
+                    }
+                }, 200);
+
+                showToast("Tembang Jawa dinyalakan", "fa-music");
             } else {
                 audio.pause();
                 audioToggle.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+                audioToggle.classList.remove('playing');
                 isPlaying = false;
+                clearInterval(fadeInterval);
             }
         });
     </script>
