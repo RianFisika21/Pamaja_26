@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAMAJA 2026 | Premium Javanese Heritage</title>
     
+    <!-- 🚀 UPGRADE 1: OPEN GRAPH TAGS (Untuk Tampilan Share WA/IG) -->
+    <meta property="og:title" content="PAMAJA 2026 - Paseduluran Mahasiswa Ngayogyakarta">
+    <meta property="og:description" content="Monggo Sedulur! Satu Paseduluran, Sejuta Gagasan, Cerdas Bergerak. Daftarkan dirimu sekarang sebelum 27 November 2026!">
+    <!-- GANTI URL DI BAWAH INI DENGAN URL GAMBAR LOGO/POSTER ANDA YANG SUDAH DI-UPLOAD -->
+    <meta property="og:image" content="https://rianfisika21.github.io/Pamaja_26/logo.jpg">
+    <meta property="og:url" content="https://rianfisika21.github.io/Pamaja_26/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <!-- Import Font Klasik & Modern -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome untuk Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -21,98 +28,56 @@
             --dark-sogan: #120b06;
             --dark-brown: #2B1B17;
             --text-cream: #FDF5E6;
-            --text-gray: #d1c8c4; /* Warna abu diperjelas untuk aksesibilitas */
+            --text-gray: #d1c8c4;
         }
 
         body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--dark-sogan);
-            font-family: 'Poppins', sans-serif;
-            padding: 20px;
-            overflow-x: hidden;
-            position: relative;
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background-color: var(--dark-sogan); font-family: 'Poppins', sans-serif; padding: 20px;
+            overflow-x: hidden; position: relative;
         }
 
         /* --- BACKGROUND PARTIKEL EMAS MELAYANG --- */
-        .gold-dust {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0; overflow: hidden;
-        }
-        .dust {
-            position: absolute; background: var(--gold); border-radius: 50%;
-            opacity: 0.4; animation: floatUp linear infinite;
-            box-shadow: 0 0 10px var(--gold);
-        }
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            20% { opacity: 0.6; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
-        }
+        .gold-dust { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .dust { position: absolute; background: var(--gold); border-radius: 50%; opacity: 0.4; animation: floatUp linear infinite; box-shadow: 0 0 10px var(--gold); }
+        @keyframes floatUp { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 20% { opacity: 0.6; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
 
         /* --- KARTU UTAMA --- */
         .card-wrapper { perspective: 1000px; z-index: 1; width: 100%; max-width: 420px; }
-
         .poster-card {
             background: linear-gradient(135deg, rgba(43,27,23,0.95) 0%, rgba(18,11,6,0.98) 100%);
-            border: 2px solid var(--gold); border-radius: 20px;
-            width: 100%; min-height: 100%; padding: 35px 25px 25px;
+            border: 2px solid var(--gold); border-radius: 20px; width: 100%; padding: 35px 25px 25px;
             position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 30px rgba(212, 175, 55, 0.1);
-            text-align: center; overflow: hidden;
-            display: flex; flex-direction: column; justify-content: space-between;
+            text-align: center; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
             transform-style: preserve-3d; transition: transform 0.1s ease;
         }
-
-        .poster-card::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 60%);
-            pointer-events: none; z-index: 0;
-        }
+        .poster-card::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 60%); pointer-events: none; z-index: 0; }
 
         /* Ornamen Sudut */
-        .corner-ornament {
-            position: absolute; width: 40px; height: 40px;
-            border: 3px solid var(--gold); z-index: 10; transform: translateZ(20px);
-        }
+        .corner-ornament { position: absolute; width: 40px; height: 40px; border: 3px solid var(--gold); z-index: 10; transform: translateZ(20px); }
         .top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; border-top-left-radius: 10px; }
         .top-right { top: 10px; right: 10px; border-left: none; border-bottom: none; border-top-right-radius: 10px; }
         .bottom-left { bottom: 10px; left: 10px; border-right: none; border-top: none; border-bottom-left-radius: 10px; }
         .bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; border-bottom-right-radius: 10px; }
 
         /* Running Text */
-        .marquee-wrapper {
-            background: var(--gold); color: var(--dark-sogan); font-weight: 600;
-            font-size: 0.75rem; padding: 6px 0; position: absolute;
-            top: 0; left: 0; right: 0; overflow: hidden; white-space: nowrap; z-index: 10;
-            font-family: 'Cinzel', serif; letter-spacing: 1px;
-        }
+        .marquee-wrapper { background: var(--gold); color: var(--dark-sogan); font-weight: 600; font-size: 0.75rem; padding: 6px 0; position: absolute; top: 0; left: 0; right: 0; overflow: hidden; white-space: nowrap; z-index: 10; font-family: 'Cinzel', serif; letter-spacing: 1px; }
         .marquee { display: inline-block; animation: scrollText 15s linear infinite; }
         @keyframes scrollText { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
         /* Header & Logo */
-        .header-section { margin-top: 20px; transform: translateZ(30px); margin-bottom: 15px;}
-        .logo-container {
-            width: 90px; height: 90px; margin: 0 auto;
-            background: #fff; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 20px var(--gold); border: 3px solid var(--gold);
-            overflow: hidden; position: relative;
-        }
+        .header-section { margin-top: 20px; transform: translateZ(30px); margin-bottom: 15px; }
+        .logo-container { width: 90px; height: 90px; margin: 0 auto; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px var(--gold); border: 3px solid var(--gold); overflow: hidden; position: relative; }
         .logo-container img { width: 100%; height: 100%; object-fit: cover; }
 
         /* Teks Utama */
         .content-section { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; transform: translateZ(40px); }
         .tagline-top { color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 3px; margin-bottom: 8px; text-transform: uppercase; }
-        
         h1 { font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 800; line-height: 1.1; color: var(--text-cream); text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(212, 175, 55, 0.5); margin-bottom: 10px; text-transform: uppercase; }
-        
-        .tagline-bottom { color: var(--text-gray); font-size: 0.85rem; line-height: 1.4; margin-bottom: 20px; font-style: italic; }
+        .tagline-bottom { color: var(--text-gray); font-size: 0.85rem; line-height: 1.4; margin-bottom: 15px; font-style: italic; }
 
         /* Countdown */
-        .countdown-container { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
+        .countdown-container { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; }
         .countdown-box { background: rgba(0,0,0,0.6); border: 1px solid var(--gold); border-radius: 8px; padding: 6px; min-width: 55px; }
         .countdown-number { color: var(--gold-light); font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 800; }
         .countdown-label { color: var(--text-gray); font-size: 0.65rem; text-transform: uppercase; }
@@ -121,29 +86,28 @@
         .info-box { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.5); border-radius: 10px; padding: 12px 15px; margin-bottom: 15px; text-align: left; }
         .info-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.85rem; color: var(--text-cream); }
         .info-item:last-child { margin-bottom: 0; }
-        .info-label { font-weight: 600; color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.8rem;}
+        .info-label { font-weight: 600; color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.8rem; }
 
-        /* Why Join (Value Prop) */
-        .why-join { text-align: left; margin-bottom: 20px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px; }
-        .why-join-title { color: var(--gold); font-size: 0.8rem; font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
-        .why-join ul { list-style: none; font-size: 0.8rem; color: var(--text-gray); line-height: 1.5; }
-        .why-join ul li { margin-bottom: 4px; display: flex; align-items: flex-start; gap: 8px; }
-        .why-join ul li i { color: var(--gold); margin-top: 3px; font-size: 0.75rem; }
+        /* 🚀 UPGRADE 2: FAQ ACCORDION (Mengurangi beban chat panitia) */
+        .faq-section { text-align: left; margin-bottom: 15px; }
+        .faq-title { color: var(--gold); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
+        .faq-item { background: rgba(0,0,0,0.3); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+        .faq-question { width: 100%; text-align: left; background: none; border: none; color: var(--text-cream); padding: 10px 12px; font-family: 'Poppins', sans-serif; font-size: 0.8rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+        .faq-question i { transition: transform 0.3s ease; color: var(--gold); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: rgba(212, 175, 55, 0.05); }
+        .faq-answer p { padding: 0 12px 10px; font-size: 0.75rem; color: var(--text-gray); line-height: 1.5; }
+        .faq-item.active .faq-answer { max-height: 150px; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
 
         /* Tombol */
-        .cta-button {
-            display: block; width: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-            background-size: 200% auto; color: var(--dark-sogan); font-family: 'Cinzel', serif;
-            font-weight: 800; font-size: 1rem; text-decoration: none; padding: 15px; border-radius: 50px;
-            text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-            transition: all 0.3s ease; border: none; cursor: pointer; margin-bottom: 12px; position: relative; overflow: hidden; animation: shimmer 3s infinite linear;
-        }
+        .cta-button { display: block; width: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); background-size: 200% auto; color: var(--dark-sogan); font-family: 'Cinzel', serif; font-weight: 800; font-size: 1rem; text-decoration: none; padding: 15px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); transition: all 0.3s ease; border: none; cursor: pointer; margin-bottom: 12px; position: relative; overflow: hidden; animation: shimmer 3s infinite linear; }
         @keyframes shimmer { to { background-position: 200% center; } }
         .cta-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.8); }
 
-        /* Copy Button */
-        .copy-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px 12px; border-radius: 20px; font-size: 0.75rem; cursor: pointer; transition: 0.3s; margin-bottom: 20px; display: inline-flex; align-items: center; gap: 5px; }
-        .copy-btn:hover { background: var(--gold); color: var(--dark-sogan); }
+        /* Tombol Copy & Share */
+        .action-buttons { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
+        .copy-btn, .share-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px 12px; border-radius: 20px; font-size: 0.75rem; cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 5px; flex: 1; justify-content: center; }
+        .copy-btn:hover, .share-btn:hover { background: var(--gold); color: var(--dark-sogan); }
 
         /* Footer */
         .footer-section { display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.4); margin-bottom: 5px; transform: translateZ(20px); }
@@ -151,19 +115,21 @@
         .contact-info span { color: var(--gold); font-weight: 600; }
         .contact-info a { color: var(--gold); text-decoration: none; }
         .contact-info a:hover { text-decoration: underline; }
-        
         .qr-code { background: white; padding: 5px; border-radius: 8px; width: 60px; height: 60px; }
         .qr-code img { width: 100%; height: 100%; display: block; border-radius: 4px; }
 
-        /* Controls (Hanya Fullscreen, Tombol Record disembunyikan) */
+        /* 🚀 UPGRADE 3: FLOATING WHATSAPP BUTTON */
+        .floating-wa { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease; animation: bounce 2s infinite; }
+        .floating-wa:hover { transform: scale(1.1); color: white; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+
+        /* Controls */
         .controls { margin-top: 25px; display: flex; gap: 15px; z-index: 10; }
         .btn-control { background: var(--dark-brown); color: var(--gold); border: 2px solid var(--gold); padding: 10px 20px; border-radius: 30px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; }
         .btn-control:hover { background: var(--gold); color: var(--dark-sogan); }
 
-        .hidden { display: none !important; }
-
         /* Toast */
-        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--gold); color: var(--dark-sogan); padding: 12px 24px; border-radius: 30px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,0.5); opacity: 0; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 999; display: flex; align-items: center; gap: 10px; }
+        .toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--gold); color: var(--dark-sogan); padding: 12px 24px; border-radius: 30px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,0.5); opacity: 0; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 999; display: flex; align-items: center; gap: 10px; }
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
         /* Mobile Adjustments */
@@ -173,6 +139,7 @@
             .countdown-number { font-size: 1rem; }
             .countdown-box { min-width: 45px; padding: 4px; }
             .info-item { font-size: 0.75rem; }
+            .floating-wa { width: 50px; height: 50px; font-size: 25px; bottom: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -195,7 +162,6 @@
             <!-- HEADER LOGO -->
             <div class="header-section">
                 <div class="logo-container">
-                    <!-- Sekarang menggunakan file lokal logo.jpg -->
                     <img src="logo.jpg" alt="Logo PAMAJA" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-family:Cinzel; color:var(--gold); font-size:1.2rem; font-weight:bold;\'>PAMAJA</span>';">
                 </div>
             </div>
@@ -226,19 +192,27 @@
                     </div>
                 </div>
 
-                <!-- Value Proposition (Kenapa Harus Ikut) -->
-                <div class="why-join">
-                    <div class="why-join-title">Kenapa Harus Ikut?</div>
-                    <ul>
-                        <li><i class="fa-solid fa-users"></i> Perluas jaringan mahasiswa se-Jogja</li>
-                        <li><i class="fa-solid fa-lightbulb"></i> Wadah gagasan & pengembangan diri</li>
-                        <li><i class="fa-solid fa-masks-theater"></i> Ikuti berbagai acara seru & bermanfaat</li>
-                    </ul>
+                <!-- FAQ (Tanya Jawab) -->
+                <div class="faq-section">
+                    <div class="faq-title">Ada Pertanyaan?</div>
+                    <div class="faq-item">
+                        <button class="faq-question">Siapa yang boleh mendaftar? <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="faq-answer"><p>Seluruh mahasiswa aktif di Yogyakarta dari kampus manapun, tanpa terkecuali.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Apakah ada biaya pendaftaran? <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="faq-answer"><p>Tidak ada biaya (Gratis). Kami hanya mencari pemuda-pemudi dengan semangat yang sama.</p></div>
+                    </div>
                 </div>
 
                 <!-- CTA -->
                 <a href="https://bit.ly/Pamaja2026" target="_blank" class="cta-button">Ndaftar Sakniki 🔥</a>
-                <button class="copy-btn" id="copyBtn"><i class="fa-regular fa-copy"></i> Salin Link Pendaftaran</button>
+                
+                <!-- Tombol Aksi -->
+                <div class="action-buttons">
+                    <button class="copy-btn" id="copyBtn"><i class="fa-regular fa-copy"></i> Salin Link</button>
+                    <button class="share-btn" id="shareBtn"><i class="fa-solid fa-share-nodes"></i> Bagikan</button>
+                </div>
             </div>
 
             <!-- FOOTER -->
@@ -248,23 +222,27 @@
                     IG: <a href="https://www.instagram.com/pamaja_26/" target="_blank">@pamaja_26</a>
                 </div>
                 <div class="qr-code">
-                    <!-- Menambahkan loading="lazy" untuk performa -->
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://bit.ly/Pamaja2026" alt="QR Code Pendaftaran PAMAJA 2026" loading="lazy">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Panel Kontrol (Tombol Record dihilangkan agar publik tidak bingung) -->
+    <!-- Panel Kontrol -->
     <div class="controls" id="controlPanel">
         <button class="btn-control" id="btnFullscreen"><i class="fa-solid fa-expand"></i> Fullscreen</button>
     </div>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/6283185793820?text=Halo%20Rian,%20saya%20ingin%20bertanya%20seputar%20PAMAJA%202026" target="_blank" class="floating-wa" title="Hubungi Panitia">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <div class="toast" id="toast"><i class="fa-solid fa-check-circle"></i> <span id="toastMsg">Berhasil!</span></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
     <script>
-        // 1. Efek 3D Tilt (Dimatikan di layar sentuh agar tidak mengganggu scroll)
+        // 1. Efek 3D Tilt (Hanya di PC/Laptop)
         if (window.matchMedia("(hover: hover)").matches) {
             VanillaTilt.init(document.querySelector("#posterCard"), {
                 max: 8, speed: 400, glare: true, "max-glare": 0.2, scale: 1.02
@@ -303,7 +281,7 @@
             document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
         }, 1000);
 
-        // 4. Toast
+        // 4. Toast Notification
         function showToast(message, icon = "fa-check-circle") {
             const toast = document.getElementById("toast");
             toast.querySelector('i').className = `fa-solid ${icon}`;
@@ -316,6 +294,38 @@
         document.getElementById('copyBtn').addEventListener('click', () => {
             navigator.clipboard.writeText("https://bit.ly/Pamaja2026").then(() => {
                 showToast("Link berhasil disalin!", "fa-link");
+            });
+        });
+
+        // 🚀 UPGRADE 4: FITUR SHARE (Web Share API)
+        document.getElementById('shareBtn').addEventListener('click', async () => {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'PAMAJA 2026',
+                        text: 'Monggo Sedulur! Ayo bergabung dengan Paseduluran Mahasiswa Ngayogyakarta. Daftar sekarang!',
+                        url: 'https://rianfisika21.github.io/Pamaja_26/'
+                    });
+                } catch (err) {
+                    console.log('Share dibatalkan', err);
+                }
+            } else {
+                // Fallback jika browser tidak mendukung
+                navigator.clipboard.writeText("https://rianfisika21.github.io/Pamaja_26/");
+                showToast("Link disalin! Silakan share manual.", "fa-link");
+            }
+        });
+
+        // 🚀 UPGRADE 5: FAQ ACCORDION LOGIC
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const parent = question.parentElement;
+                // Tutup yang lain jika mau (opsional)
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if(item !== parent) item.classList.remove('active');
+                });
+                parent.classList.toggle('active');
             });
         });
 
